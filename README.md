@@ -1,6 +1,6 @@
-# React Express Starter Pack
+# Todo App
 
-> Create full stack apps with React and Express. Run your client and server with a single command. 
+> Full-stack mern app 
 
 ## Quick Start
 
