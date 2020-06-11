@@ -20,7 +20,7 @@ app.get('/api/customers', (req, res) => {
 });
 
 //SERVE STATIC ASSETS
-if(process.env,NODE_ENV==="production"){
+if(process.env.NODE_ENV==="production"){
   //SET STATIC FOLDER
   app.use(express.static('client/build'))
 
