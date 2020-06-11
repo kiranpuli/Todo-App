@@ -3,7 +3,7 @@ bodyParser = require("body-parser"),
 mongoose = require("mongoose"),
 path = require("path")
 app = express(),
-port = 5000;
+port = process.env.PORT || 5000;
 
 //MIDDLEWARE
 app.use(bodyParser.json())
@@ -15,9 +15,7 @@ app.use("/api/items",items)
 mongoose.connect("mongodb://localhost/Todo",{useNewUrlParser:true,useUnifiedTopology:true,useFindAndModify:false})
 
 
-app.get('/api/customers', (req, res) => {
-  res.send("HI")
-});
+
 
 //SERVE STATIC ASSETS
 if(process.env.NODE_ENV==="production"){
