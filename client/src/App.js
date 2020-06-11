@@ -1,20 +1,29 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Customers from './components/customers';
+import React, { Component } from 'react'
+import { Provider } from 'react-redux'
+import { BrowserRouter,Switch,Route } from 'react-router-dom'
 
-class App extends Component {
+import store from './store'
+
+import Nav  from './components/Nav'
+import List  from './components/List'
+import Form  from './components/Form'
+
+export class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">React Express Starter</h1>
-        </header>
-        <Customers />
-      </div>
-    );
+      <Provider store={store}>
+        <BrowserRouter>
+          <div className="container-fluid">
+            <Nav/>
+            <Switch>
+              <Route exact path="/" component={List}/>
+              <Route  path="/new" component={Form}/>
+            </Switch>
+          </div>
+        </BrowserRouter>
+      </Provider>
+    )
   }
 }
 
-export default App;
+export default App

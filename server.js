@@ -1,17 +1,33 @@
-const express = require('express');
+const express = require('express'),
+bodyParser = require("body-parser"),
+mongoose = require("mongoose"),
+path = require("path")
+app = express(),
+port = 5000;
 
-const app = express();
+//MIDDLEWARE
+app.use(bodyParser.json())
+
+const items = require("./routes/api/items")
+app.use("/api/items",items)
+
+//DB
+mongoose.connect("mongodb://localhost/Todo",{useNewUrlParser:true,useUnifiedTopology:true,useFindAndModify:false})
+
 
 app.get('/api/customers', (req, res) => {
-  const customers = [
-    {id: 1, firstName: 'John', lastName: 'Doe'},
-    {id: 2, firstName: 'Brad', lastName: 'Traversy'},
-    {id: 3, firstName: 'Mary', lastName: 'Swanson'},
-  ];
-
-  res.json(customers);
+  res.send("HI")
 });
 
-const port = 5000;
+//SERVE STATIC ASSETS
+if(process.env,NODE_ENV==="production"){
+  //SET STATIC FOLDER
+  app.use(express.static('client/build'))
 
-app.listen(port, () => `Server running on port ${port}`);
+  app.get("*",(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+  })
+}
+
+
+app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
