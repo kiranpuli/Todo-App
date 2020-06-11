@@ -7,6 +7,7 @@ import store from './store'
 import Nav  from './components/Nav'
 import List  from './components/List'
 import Form  from './components/Form'
+import Foot  from './components/Foot'
 
 export class App extends Component {
   render() {
@@ -19,6 +20,7 @@ export class App extends Component {
               <Route exact path="/" component={List}/>
               <Route  path="/new" component={Form}/>
             </Switch>
+            <Foot/>
           </div>
         </BrowserRouter>
       </Provider>

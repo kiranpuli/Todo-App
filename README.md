@@ -27,7 +27,6 @@ npm run client
 
 ### Author
 
-Kiran Puli
 [Kiran Puli](https://kiranpuli.github.io/Portfolio/)
 
 ### Version
